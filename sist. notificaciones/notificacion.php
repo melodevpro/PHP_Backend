@@ -11,5 +11,18 @@ function enviarNotificacion($mensaje, $destinatario) {
     // Ejecutar la consulta
     if ($conn -> query($sql) === TRUE) {
         //Enviar correo electronico al destinatario con la notificacion
-        
+    $to = $destinatario;
+    $subject = "Nueva Notificación";
+    $message = $mensaje;
+    $headers = "From: no-reply@sitio.com\r\n ";
+    $mail($to, $subject, $message, $headers);
+        return "Notificación enviada y registrada correctamente.";
+    } else {
+        return "Error al registrar la notificación: " . $conn->error;
+    }
 }
+?>
+
+
+
+
